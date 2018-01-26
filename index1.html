@@ -98,21 +98,14 @@
       </div>  <!--End of panel 2 row/col grid system-->
 
       <div class="panel" ng-show="panel.isSelected(3)" id="panel3">
-        <h1>Purchase</h1>
-        <div class="col-lg-4">
-        <label>All Purchases</label>
-          <button class="btn-primary btn pull-right" ng-click="panel.SubmitPageOne()">Submit</button>
+        <h1>Transaction Log</h1>
+        <div class="text-center">
+        <label>Transaction Search</label>
+        <select  ng-model="selectedTransactionOption" ng-cloak ng-options="x for x in transactionOptions"></select>
+        <br />
+        <input ng-hide="showPost" class="form-group"value="{{transactionInput}}"></input>
+          <button class="btn-primary btn " ng-click="panel.RequestMethodToggle()">Submit</button>
         </div>
-        <div class="col-sm-4">
-        <label>Purchase by resource</label>
-          <input  class="form-group"value="{{rname}}"></input>
-          <button class="btn-primary btn pull-right" ng-click="panel.SubmitPageOne()">Submit</button>
-        </div>
-        <div class="col-sm-4">
-        <label>Purchase by customer</label>
-          <input  class="form-group"value="{{sid}}"></input>
-          <button class="btn-primary btn pull-right" ng-click="panel.getResourceBySupplier()">Submit</button>
-            </div>
 
       </div><!--End of panel 3 row/col grid system-->
 
@@ -122,7 +115,7 @@
         <label>Requests Search</label>
         <select ng-change="change()" ng-model="selectedRequestOption" ng-cloak ng-options="x for x in requestOptions"></select>
         <br />
-        <input ng-hide="showPost" class="form-group"value="{{requestInput}}"></input>
+        <input ng-hide="showPost" class="form-group" ng-model = "currentSelec"></input>
         <input ng-show="showPost" placeholder="Cid" ng-model="cid"></input>
         <input ng-show="showPost" placeholder="Rid" ng-model="rid"></input>
         <input ng-show="showPost" placeholder="rrqty" ng-model="rrqty"></input>
