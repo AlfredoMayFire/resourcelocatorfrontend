@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html ng-app="store">
+  <head>
+    <link rel="stylesheet" type="text/css" href="C:\Users\My PC\Desktop\TransInfoWebApp\bootstrap-3.3.7-dist\css\bootstrap.min.css" />
+  </head>
+  <body ng-controller="StoreController as store">
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <div class="list-group">
+      <div class="list-group-item" ng-repeat="products in store.product | orderBy:'-price'">
+          <!--StoreController is the controller in app.js and store is the alias for use in index.html-->
+          <h3>
+            {{products.name}}
+            <em class="pull-right">{{products.price | currency}}</em>
+          </h3>
+
+
+          <!--  <h2>${{products.price}}</h2> -->
+          <!--  <p>{{products.description}}</p> -->
+          <button ng-show="store.product.canPurchase">Add to Cart</button>
+
+
+    <section ng-controller="PanelController as panel">
+
+      <ul class="nav nav-pills">
+        <li ng-class="{active: panel.isSelected(1)}">
+           <a href ng-click="panel.selectTab(1)">Description</a>
+        </li>
+        <li ng-class="{active: panel.isSelected(2)}">
+           <a href ng-click="panel.selectTab(2)">Specifications</a>
+        </li>
+        <li ng-class="{active: panel.isSelected(3)}">
+          <a href ng-click="panel.selectTab(3)">Reviews</a>
+        </li>
+      </ul>
+
+      <div class="panel" ng-show="panel.isSelected(1)">
+          <h4>Description</h4>
+          <p>{{store.product.description}}</p>
+        </div>
+      <div class="panel" ng-show="panel.isSelected(2)">
+          <h4>Specifications</h4>
+          <p>None Yet!</p>
+        </div>
+      <div class="panel" ng-show="panel.isSelected(3)">
+          <ul>
+            <h4>Reviews</h4>
+            <li ng-repeat="review in product.reviews">
+              <blockquote>
+                <b>Stars: {{review.stars}}</b>
+                {{review.body}}
+                <cite class="clearfix"> by: {{review.author}}</cite>
+              </blockquote>
+            </li>
+          </ul>
+        </div>
+    </section>
+  </div>
+</div>
+
+  </body>
+</html>

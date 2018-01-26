@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html ng-app="resourceLocator">
+  <head>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link rel="stylesheet" type="text/css" href="/Users/user/Documents/Github/TransInfoWebApp/bootstrap-3.3.7-dist/css/bootstrap.css" />
+  </head>
+  <body ng-cloak>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <!-- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script> -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+    <script type="text/javascript" src="angular.js"></script>
+    <script type="text/javascript" src="resourceLocator.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-animate.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-dropdown-multiselect/1.11.8/angularjs-dropdown-multiselect.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+
+
+
+
+    <section  ng-cloak ng-controller="PanelController as panel" class="text-center">
+
+      <ul layout-align="center" class="nav nav-pills text-center">
+        <li ng-class="{active: panel.isSelected(1)}">
+           <a href ng-click="panel.selectTab(1)">Resource</a>
+        </li>
+        <li ng-class="{active: panel.isSelected(2)}">
+           <a href ng-click="panel.selectTab(2)">Announcement</a>
+        </li>
+        <li ng-class="{active: panel.isSelected(3)}">
+          <a href ng-click="panel.selectTab(3)">Purchase</a>
+        </li>
+        <li ng-class="{active: panel.isSelected(4)}">
+          <a href ng-click="panel.selectTab(4)">Request</a>
+        </li>
+        <li ng-class="{active: panel.isSelected(5)}">
+          <a href ng-click="panel.selectTab(5)">User</a>
+        </li>
+        <li ng-class="{active: panel.isSelected(6)}">
+          <a href ng-click="panel.selectTab(6)">Dashboard</a>
+        </li>
+      </ul>
+
+      <div class="panel " ng-cloak ng-show="panel.isSelected(1)" id="panel1">
+        <h1>Resource</h1>
+
+        <div class="text-center">
+        <label>Resources Search</label>
+        <select ng-change="change()" ng-model="selectedResourceGet" ng-cloak ng-options="x for x in resourceGets"></select>
+        <br />
+        <input ng-hide="showPost" class="form-group"value="{{resourceInput}}"></input>
+        <input ng-show="showPost" placeholder="Rname" ng-model="rname"></input>
+        <input ng-show="showPost" placeholder="Rstock" ng-model="rstock"></input>
+        <input ng-show="showPost" placeholder="Cid" ng-model="cid"></input>
+        <input ng-show="showPost" placeholder="Rprice" ng-model="rprice"></input>
+          <button class="btn-primary btn " ng-click="panel.getAllResources()">Submit</button>
+        </div>
+        <!-- <div class="col-lg-4">
+        <label>Resources by name</label>
+          <input  class="form-group"value="{{rname}}"></input>
+          <button class="btn-primary btn pull-right" ng-click="panel.SubmitPageOne()">Submit</button>
+        </div>
+        <div class="col-lg-4">
+        <label>Resource by supplier</label>
+          <input  class="form-group"value="{{sid}}"></input>
+          <button class="btn-primary btn pull-right" ng-click="panel.getResourceBySupplier()">Submit</button>
+        </div> -->
+
+      </div> <!--End of panel 1 row/col grid system-->
+
+      <div class="panel" ng-show="panel.isSelected(2)" id="panel2">
+        <h1>Announcement</h1>
+
+        <div class="col-lg-4">
+        <label>All Announcements</label>
+          <button class="btn-primary btn pull-right" ng-click="panel.SubmitPageOne()">Submit</button>
+        </div>
+        <div class="col-sm-4">
+        <label>Announcement by supp name</label>
+          <input  class="form-group"value="{{rname}}"></input>
+          <button class="btn-primary btn pull-right" ng-click="panel.SubmitPageOne()">Submit</button>
+        </div>
+        <div class="col-sm-4">
+        <label>Announcement by resource</label>
+          <input  class="form-group"value="{{sid}}"></input>
+          <button class="btn-primary btn pull-right" ng-click="panel.getResourceBySupplier()">Submit</button>
+            </div>
+
+          <div class="col-lg-4">
+          <label>Announced Resources List</label>
+            <input  class="form-group"value="{{rname}}"></input>
+            <button class="btn-primary btn pull-right" ng-click="panel.SubmitPageOne()">Submit</button>
+          </div>
+
+      </div>  <!--End of panel 2 row/col grid system-->
+
+      <div class="panel" ng-show="panel.isSelected(3)" id="panel3">
+        <h1>Purchase</h1>
+        <div class="col-lg-4">
+        <label>All Purchases</label>
+          <button class="btn-primary btn pull-right" ng-click="panel.SubmitPageOne()">Submit</button>
+        </div>
+        <div class="col-sm-4">
+        <label>Purchase by resource</label>
+          <input  class="form-group"value="{{rname}}"></input>
+          <button class="btn-primary btn pull-right" ng-click="panel.SubmitPageOne()">Submit</button>
+        </div>
+        <div class="col-sm-4">
+        <label>Purchase by customer</label>
+          <input  class="form-group"value="{{sid}}"></input>
+          <button class="btn-primary btn pull-right" ng-click="panel.getResourceBySupplier()">Submit</button>
+            </div>
+
+      </div><!--End of panel 3 row/col grid system-->
+
+      <div class="panel" ng-show="panel.isSelected(4)" id="panel4">
+        <h1>Request</h1>
+        <div class="col-lg-4">
+        <label>All Requests</label>
+          <button class="btn-primary btn pull-right" ng-click="panel.SubmitPageOne()">Submit</button>
+        </div>
+        <div class="col-sm-4">
+        <label>Requests by resource</label>
+          <input  class="form-group"value="{{rname}}"></input>
+          <button class="btn-primary btn pull-right" ng-click="panel.SubmitPageOne()">Submit</button>
+        </div>
+        <div class="col-sm-4">
+        <label>Requests by id</label>
+          <input  class="form-group"value="{{sid}}"></input>
+          <button class="btn-primary btn pull-right" ng-click="panel.getResourceBySupplier()">Submit</button>
+            </div>
+
+      </div><!--End of panel 4 row/col grid system-->
+
+      <div class="panel" ng-show="panel.isSelected(5)" id="panel5">
+        <h1>User</h1>
+
+
+      </div><!--End of panel 5 row/col grid system-->
+
+      <div class="panel" ng-show="panel.isSelected(6)" id="panel6">
+        <h1>Dashboard</h1>
+      </div><!--End of panel 6 row/col grid system-->
+
+
+    </section>
+
+
+
+  </body>
+</html>
