@@ -28,7 +28,7 @@
     };
 
     this.RequestMethodToggle = function(){
-      for (var i = 0; i < 10; i++) {
+      for (var i = 0; i < 4; i++) {
         if ($scope.requestOptions[i]==$scope.selectedRequestOption) {
           $scope.selectedIndex = i;
         }
@@ -41,27 +41,31 @@
           });
           break;
         case 1:
-        var resourceId
-        $http.get("http://127.0.0.1:5000/ResourceLocator/requests/{resourceId}")
+        console.log("RID is: " + $scope.currentSelec );
+        var resourceId = $scope.currentSelec;
+        $http.get("http://127.0.0.1:5000/ResourceLocator/requests/" + resourceId)
         .then(function(response){
           console.log(response);
         });
         break;
         case 2:
-        var requestjson
-             $http.post("http://127.0.0.1:5000/ResourceLocator/BrowseRequests", requestjson)
-            .then(function(response){
-              alert("Successfully inserted resource!");
-            });
-            break;
-            case 1:
-            var resourceName = $scope.requestInput
-            $http.get("http://127.0.0.1:5000/ResourceLocator/requests/" + resourceName)
-            .then(function(response){
-              console.log(response);
-            });
-            break;
-
+        var resourceName = $scope.currentSelec;
+        $http.get("http://127.0.0.1:5000/ResourceLocator/requests/" + resourceName)
+        .then(function(response){
+          console.log(response);
+        });
+        break;
+        case 3:
+        var requestjson={};
+        requestjson.cid = $scope.cid;
+        requestjson.rid = $scope.rid;
+        requestjson.tid = $scope.tid;
+        requestjson.rrqty = $scope.rrqty;
+        $http.post("http://127.0.0.1:5000/ResourceLocator/BrowseRequests", requestjson)
+        .then(function(response){
+        alert("Successfully inserted request!");
+        });
+        break;
         default:
       }
 
