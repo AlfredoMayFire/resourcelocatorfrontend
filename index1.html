@@ -57,16 +57,6 @@
           <button class="btn-primary btn " ng-click="panel.getAllResources()">Submit</button>
           <p ng-model="display">{{display}}</p>
         </div>
-        <!-- <div class="col-lg-4">
-        <label>Resources by name</label>
-          <input  class="form-group"value="{{rname}}"></input>
-          <button class="btn-primary btn pull-right" ng-click="panel.SubmitPageOne()">Submit</button>
-        </div>
-        <div class="col-lg-4">
-        <label>Resource by supplier</label>
-          <input  class="form-group"value="{{sid}}"></input>
-          <button class="btn-primary btn pull-right" ng-click="panel.getResourceBySupplier()">Submit</button>
-        </div> -->
 
       </div> <!--End of panel 1 row/col grid system-->
 
@@ -75,24 +65,16 @@
 
         <div class="col-lg-4">
         <label>All Announcements</label>
-          <button class="btn-primary btn pull-right" ng-click="panel.SubmitPageOne()">Submit</button>
+        <select ng-change="change()" ng-model="selectedAnnouncementOption" ng-cloak ng-options="x for x in announcementOptions"></select>
+        <input ng-hide="showPost" class="form-group"ng-model="resourceInput"></input>
+        <input ng-show="showPost" placeholder="Sid" ng-model="sid"></input>
+        <input ng-show="showPost" placeholder="Rid" ng-model="rid"></input>
+        <input ng-show="showPost" placeholder="Aqty" ng-model="Aqty"></input>
+        <input ng-show="showPost" placeholder="Aprice" ng-model="aprice"></input>
+        <input ng-show="showPost" placeholder="Tid" ng-model="tid"></input>
+        <button class="btn-primary btn pull-right" ng-click="panel.getAllAnnouncements()">Submit</button>
+        <p ng-model="display">{{display}}</p>
         </div>
-        <div class="col-sm-4">
-        <label>Announcement by supp name</label>
-          <input  class="form-group"value="{{rname}}"></input>
-          <button class="btn-primary btn pull-right" ng-click="panel.SubmitPageOne()">Submit</button>
-        </div>
-        <div class="col-sm-4">
-        <label>Announcement by resource</label>
-          <input  class="form-group"value="{{sid}}"></input>
-          <button class="btn-primary btn pull-right" ng-click="panel.getResourceBySupplier()">Submit</button>
-            </div>
-
-          <div class="col-lg-4">
-          <label>Announced Resources List</label>
-            <input  class="form-group"value="{{rname}}"></input>
-            <button class="btn-primary btn pull-right" ng-click="panel.SubmitPageOne()">Submit</button>
-          </div>
 
       </div>  <!--End of panel 2 row/col grid system-->
 

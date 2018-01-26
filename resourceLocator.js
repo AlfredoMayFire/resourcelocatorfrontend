@@ -6,6 +6,7 @@
 
   var Info = "";
   var example1model={};
+  var example2model={};
   var showPost=false;
 
 
@@ -21,8 +22,11 @@
     $scope.requestOptions = {0:"All Requests", 1:"Requests by Resource ID", 2:"Requests By Resource Name", 3:"Post a Request"}
     $scope.selectedRequestOption;
 
+    $scope.announcementOptions = {0:"All Announcements", 1:"Announcement by Supplier ID", 2:"Announcement By Supplier Name", 3:"Announcement By Resource Name",4:"Post an Announcement"}
+    $scope.selectedAnnouncementOption;
+
     $scope.change = function(){
-      if ($scope.selectedResourceGet=="Post a resource" || $scope.selectedRequestOption == "Post a Request") {
+      if ($scope.selectedAnnouncementOption=="Post an Announcement"||$scope.selectedResourceGet=="Post a resource" || $scope.selectedRequestOption == "Post a Request") {
         $scope.showPost=true;
       }
     };
@@ -67,6 +71,58 @@
         });
         break;
         default:
+      }
+
+    };
+    this.getAllAnnouncements = function(){
+      for (var i = 0; i < 10; i++) {
+        if ($scope.announcementOptions[i]==$scope.selectedAnnouncementOption) {
+          $scope.selectedIndex = i;
+        }
+      }
+      switch ($scope.selectedIndex) {
+        case 0:
+          $http.get("http://127.0.0.1:5000/ResourceLocator/Announcements")
+          .then(function(response){
+            $scope.display=response.data;
+            // console.log(response);
+          });
+          break;
+        case 1:
+          $http.get("http://127.0.0.1:5000/ResourceLocator/Announcements/"+$scope.resourceInput)
+          .then(function(response){
+            $scope.display=response.data;
+            console.log(response);
+          });
+          break;
+        case 2:
+          $http.get("http://127.0.0.1:5000/ResourceLocator/Announcements/"+$scope.resourceInput)
+          .then(function(response){
+            $scope.display=response.data;
+            console.log(response);
+          });
+          break;
+          case 3:
+            $http.get("http://127.0.0.1:5000/ResourceLocator/SearchAnnounce/Resource/"+$scope.resourceInput)
+            .then(function(response){
+              $scope.display=response.data;
+              console.log(response);
+            });
+            break;
+        case 4:
+        example2model.sid = $scope.sid;
+        example2model.rid = $scope.rid;
+        example2model.aqty = $scope.aqty;
+        example2model.aprice = $scope.aprice;
+        example2model.tid = $scope.tid;
+             $http.post("http://127.0.0.1:5000/ResourceLocator/Announcements", example2model)
+            .then(function(response){
+              alert(response);
+            });
+
+            break;
+        default:
+        break;
       }
 
     };
