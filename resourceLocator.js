@@ -9,7 +9,7 @@
   var showPost=false;
 
 
-  var app = angular.module('resourceLocator', ["ui.bootstrap.modal","ngMaterial"]);
+  var app = angular.module('resourceLocator', ["ui.bootstrap.modal","ngMaterial","ngAnimate"]);
 
   app.controller('PanelController', function($scope,$http,$mdDialog){
     $scope.settings = { selectionLimit: 1 };
@@ -81,54 +81,63 @@
         case 0:
           $http.get("http://127.0.0.1:5000/ResourceLocator/resource")
           .then(function(response){
-            $scope.display=response.data[0];
-            console.log(response);
+            $scope.display=response.data;
+            // console.log(response);
           });
           break;
         case 1:
           $http.get("http://127.0.0.1:5000/ResourceLocator/resource/instock")
           .then(function(response){
+            $scope.display=response.data;
             console.log(response);
           });
           break;
         case 2:
           $http.get("http://127.0.0.1:5000/ResourceLocator/resource/instock/"+$scope.resourceInput)
           .then(function(response){
+            $scope.display=response.data;
             console.log(response);
           });
+          break;
         case 3:
           $http.get("http://127.0.0.1:5000/ResourceLocator/resource/"+$scope.resourceInput)
           .then(function(response){
+            $scope.display=response.data;
             console.log(response);
           });
             break;
         case 4:
           $http.get("http://127.0.0.1:5000/ResourceLocator/resource/"+$scope.resourceInput)
           .then(function(response){
+            $scope.display=response.data;
             console.log(response);
           });
           break;
         case 5:
           $http.get("http://127.0.0.1:5000/ResourceLocator/resource/category/"+$scope.resourceInput)
           .then(function(response){
+            $scope.display=response.data;
             console.log(response);
           });
           break;
         case 6:
           $http.get("http://127.0.0.1:5000/ResourceLocator/resource/category/"+$scope.resourceInput)
           .then(function(response){
+            $scope.display=response.data;
             console.log(response);
           });
           break;
         case 7:
           $http.get("http://127.0.0.1:5000/ResourceLocator/resource/"+$scope.resourceName+"/supplier/"+$scope.supplierID)
           .then(function(response){
+            $scope.display=response.data;
             console.log(response);
           });
           break;
         case 8:
           $http.get("http://127.0.0.1:5000/ResourceLocator/resource/"+$scope.resourceID+"/region/"+$scope.townID)
           .then(function(response){
+            $scope.display=response.data;
             console.log(response);
           });
           break;
@@ -144,6 +153,7 @@
 
             break;
         default:
+        break;
       }
 
     };
