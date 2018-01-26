@@ -6,7 +6,6 @@
   </head>
   <body ng-cloak>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-  <!-- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script> -->
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
 
@@ -15,7 +14,7 @@
     <script type="text/javascript" src="angular.js"></script>
     <script type="text/javascript" src="resourceLocator.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-animate.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-dropdown-multiselect/1.11.8/angularjs-dropdown-multiselect.min.js"></script>
+
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
 
@@ -52,12 +51,13 @@
         <label>Resources Search</label>
         <select ng-change="change()" ng-model="selectedResourceGet" ng-cloak ng-options="x for x in resourceGets"></select>
         <br />
-        <input ng-hide="showPost" class="form-group"value="{{resourceInput}}"></input>
+        <input ng-hide="showPost" class="form-group"ng-model="resourceInput"></input>
         <input ng-show="showPost" placeholder="Rname" ng-model="rname"></input>
         <input ng-show="showPost" placeholder="Rstock" ng-model="rstock"></input>
         <input ng-show="showPost" placeholder="Cid" ng-model="cid"></input>
         <input ng-show="showPost" placeholder="Rprice" ng-model="rprice"></input>
           <button class="btn-primary btn " ng-click="panel.getAllResources()">Submit</button>
+          <p ng-model="display">{{display}}</p>
         </div>
         <!-- <div class="col-lg-4">
         <label>Resources by name</label>
