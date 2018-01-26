@@ -18,9 +18,51 @@
     $scope.selectedResourceGet;
     $scope.selectedIndex;
 
+    $scope.requestOptions = {0:"All Requests", 1:"Requests by Resource ID", 2:"Requests By Resource Name", 3:"Post a Request"}
+    $scope.selectedRequestOption;
+
     $scope.change = function(){
-      if ($scope.selectedResourceGet=="Post a resource") {
+      if ($scope.selectedResourceGet=="Post a resource" || $scope.selectedRequestOption == "Post a Request") {
         $scope.showPost=true;
+      }
+    };
+
+    this.RequestMethodToggle = function(){
+      for (var i = 0; i < 10; i++) {
+        if ($scope.requestOptions[i]==$scope.selectedRequestOption) {
+          $scope.selectedIndex = i;
+        }
+      }
+      switch ($scope.selectedIndex){
+        case 0:
+          $http.get("http://127.0.0.1:5000/ResourceLocator/BrowseRequests/")
+          .then(function(response){
+            console.log(response);
+          });
+          break;
+        case 1:
+        var resourceId
+        $http.get("http://127.0.0.1:5000/ResourceLocator/requests/{resourceId}")
+        .then(function(response){
+          console.log(response);
+        });
+        break;
+        case 2:
+        var requestjson
+             $http.post("http://127.0.0.1:5000/ResourceLocator/BrowseRequests", requestjson)
+            .then(function(response){
+              alert("Successfully inserted resource!");
+            });
+            break;
+            case 1:
+            var resourceName = $scope.requestInput
+            $http.get("http://127.0.0.1:5000/ResourceLocator/requests/" + resourceName)
+            .then(function(response){
+              console.log(response);
+            });
+            break;
+
+        default:
       }
 
     };
