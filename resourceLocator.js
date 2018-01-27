@@ -19,11 +19,14 @@
     $scope.selectedResourceGet;
     $scope.selectedIndex;
 
-    $scope.requestOptions = {0:"All Requests", 1:"Requests by Resource ID", 2:"Requests By Resource Name", 3:"Post a Request"}
+    $scope.requestOptions = {0:"All Requests", 1:"Requests by Resource ID", 2:"Requests By Resource Name", 3:"Post a Request"};
     $scope.selectedRequestOption;
 
-    $scope.announcementOptions = {0:"All Announcements", 1:"Announcement by Supplier ID", 2:"Announcement By Supplier Name", 3:"Announcement By Resource Name",4:"Post an Announcement"}
+    $scope.announcementOptions = {0:"All Announcements", 1:"Announcement by Supplier ID", 2:"Announcement By Supplier Name", 3:"Announcement By Resource Name",4:"Post an Announcement"};
     $scope.selectedAnnouncementOption;
+
+    $scope.transactionOptions = {0:"All Transactions", 1:"Transactions by purchase ID", 2:"Purchase By resource ID", 3:"Purchase By Supplier ID",4:"Purchase by customer ID",5:"All reservations",6:"Make a reservation",7:"Purchase a resource"};
+    $scope.selectedTransactionOption;
 
     $scope.change = function(){
       if ($scope.selectedAnnouncementOption=="Post an Announcement"||$scope.selectedResourceGet=="Post a resource" || $scope.selectedRequestOption == "Post a Request") {
@@ -31,16 +34,70 @@
       }
     };
 
+    this.getAllTransactions = function(){
+      for (var i = 0; i < 10; i++) {
+        if ($scope.transactionOptions[i]==$scope.selectedTransactionOption) {
+          $scope.selectedIndex = i;
+        }
+      };
+      switch ($scope.selectedIndex) {
+        case 0:
+          $http.get("http://127.0.0.1:5000/ResourceLocator/purchase")
+          .then(function(response){
+            $scope.display=response.data;
+            // console.log(response);
+          });
+          break;
+        case 1:
+          $http.get("http://127.0.0.1:5000/ResourceLocator/purchase/"+$scope.resourceInput)
+          .then(function(response){
+            $scope.display=response.data;
+            console.log(response);
+          });
+          break;
+        case 2:
+          $http.get("http://127.0.0.1:5000/ResourceLocator/purchase/resource/"+$scope.resourceInput)
+          .then(function(response){
+            $scope.display=response.data;
+            console.log(response);
+          });
+          break;
+          case 3:
+            $http.get("http://127.0.0.1:5000/ResourceLocator/SearchAnnounce/Resource/"+$scope.resourceInput)
+            .then(function(response){
+              $scope.display=response.data;
+              console.log(response);
+            });
+            break;
+        case 4:
+        example2model.sid = $scope.sid;
+        example2model.rid = $scope.rid;
+        example2model.aqty = $scope.aqty;
+        example2model.aprice = $scope.aprice;
+        example2model.tid = $scope.tid;
+             $http.post("http://127.0.0.1:5000/ResourceLocator/Announcements", example2model)
+            .then(function(response){
+              alert(response);
+            });
+
+            break;
+        default:
+        break;
+      }
+
+    };
+
     this.RequestMethodToggle = function(){
       for (var i = 0; i < 4; i++) {
         if ($scope.requestOptions[i]==$scope.selectedRequestOption) {
           $scope.selectedIndex = i;
         }
-      }
+      };
       switch ($scope.selectedIndex){
         case 0:
           $http.get("http://127.0.0.1:5000/ResourceLocator/BrowseRequests/")
           .then(function(response){
+            $scope.display = response.data;
             console.log(response);
           });
           break;
@@ -49,6 +106,7 @@
         var resourceId = $scope.currentSelec;
         $http.get("http://127.0.0.1:5000/ResourceLocator/requests/" + resourceId)
         .then(function(response){
+          $scope.display = response.data;
           console.log(response);
         });
         break;
@@ -56,6 +114,7 @@
         var resourceName = $scope.currentSelec;
         $http.get("http://127.0.0.1:5000/ResourceLocator/requests/" + resourceName)
         .then(function(response){
+          $scope.display = response.data;
           console.log(response);
         });
         break;
@@ -79,7 +138,7 @@
         if ($scope.announcementOptions[i]==$scope.selectedAnnouncementOption) {
           $scope.selectedIndex = i;
         }
-      }
+      };
       switch ($scope.selectedIndex) {
         case 0:
           $http.get("http://127.0.0.1:5000/ResourceLocator/Announcements")
@@ -132,7 +191,7 @@
         if ($scope.resourceGets[i]==$scope.selectedResourceGet) {
           $scope.selectedIndex = i;
         }
-      }
+      };
       switch ($scope.selectedIndex) {
         case 0:
           $http.get("http://127.0.0.1:5000/ResourceLocator/resource")
