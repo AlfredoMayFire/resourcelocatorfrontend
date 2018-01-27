@@ -102,7 +102,7 @@
           });
           break;
         case 1:
-        console.log("RID is: " + $scope.currentSelec );
+
         var resourceId = $scope.currentSelec;
         $http.get("http://127.0.0.1:5000/ResourceLocator/requests/" + resourceId)
         .then(function(response){
