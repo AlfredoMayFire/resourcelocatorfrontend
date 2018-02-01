@@ -56,22 +56,23 @@
         <input ng-show="showPost" placeholder="Cid" ng-model="cid"></input>
         <input ng-show="showPost" placeholder="Rprice" ng-model="rprice"></input>
           <button class="btn-primary btn " ng-click="panel.getAllResources()">Submit</button>
-          <table>
+          <table class="table text-center">
               <tr>
                   <th>rname</th>
                   <th>rstock</th>
                   <th>cid</th>
                   <th>rprice</th>
               </tr>
-              <tr ng-repeat="resource in display">
-                  <td>{{resource.rname}}</td>
+              <tr ng-repeat="resource in display.Resource">
+                  <td>{{resource.Rname}}</td>
                   <td>{{resource.rstock}}</td>
                   <td>{{resource.cid}}</td>
                   <td>{{resource.rprice}}</td>
               </tr>
           </table>
+      
 
-          <p ng-model="display">{{display}}</p>
+
         </div>
 
       </div> <!--End of panel 1 row/col grid system-->
