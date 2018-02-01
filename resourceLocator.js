@@ -45,7 +45,7 @@
       example3model.cid = $scope.cid;
       $http.post("http://127.0.0.1:5000/ResourceLocator/user/register", example3model)
      .then(function(response){
-       alert(response);
+       alert("Successfully inserted user!");
      });
 
     };

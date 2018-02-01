@@ -86,7 +86,9 @@
         <select  ng-model="selectedTransactionOption" ng-cloak ng-options="x for x in transactionOptions"></select>
         <br />
         <input ng-hide="showPost" class="form-group"value="{{transactionInput}}"></input>
-          <button class="btn-primary btn " ng-click="panel.RequestMethodToggle()">Submit</button>
+
+          <button class="btn-primary btn " ng-click="panel.getAllTransactions()">Submit</button>
+          <p ng-model="display">{{display}}</p>
         </div>
 
       </div><!--End of panel 3 row/col grid system-->
