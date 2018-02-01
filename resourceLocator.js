@@ -5,7 +5,7 @@
   //var url = "http://localhost:9000/";
 
   var Info = "";
-  var example1model={};
+  var example1model=[];
   var example2model={};
   var example3model={};
   var showPost=false;
@@ -202,6 +202,7 @@
     };
 
     this.getAllResources = function(){
+        $scope.responsejson1 = [];
       for (var i = 0; i < 10; i++) {
         if ($scope.resourceGets[i]==$scope.selectedResourceGet) {
           $scope.selectedIndex = i;
@@ -209,10 +210,12 @@
       };
       switch ($scope.selectedIndex) {
         case 0:
+
           $http.get("http://127.0.0.1:5000/ResourceLocator/resource")
           .then(function(response){
             $scope.display=response.data;
-            // console.log(response);
+            $scope.responsejson1 = response.data;
+             console.log($scope.responsejson1 );
           });
           break;
         case 1:

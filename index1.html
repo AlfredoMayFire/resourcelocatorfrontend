@@ -58,13 +58,15 @@
           <button class="btn-primary btn " ng-click="panel.getAllResources()">Submit</button>
           <table>
               <tr>
+                  <th>rid</th>
                   <th>rname</th>
                   <th>rstock</th>
                   <th>cid</th>
                   <th>rprice</th>
               </tr>
-              <tr ng-repeat="resource in display">
-                  <td>{{resource.rname}}</td>
+              <tr ng-repeat="resource in responsejson1">
+                  <td>{{resource.Rid}}</td>
+                  <td>{{resource.Rname}}</td>
                   <td>{{resource.rstock}}</td>
                   <td>{{resource.cid}}</td>
                   <td>{{resource.rprice}}</td>
