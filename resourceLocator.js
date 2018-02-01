@@ -7,6 +7,7 @@
   var Info = "";
   var example1model={};
   var example2model={};
+  var example3model={};
   var showPost=false;
 
 
@@ -28,10 +29,25 @@
     $scope.transactionOptions = {0:"All Transactions", 1:"Transactions by purchase ID", 2:"Purchase By resource ID", 3:"Purchase By Supplier ID",4:"Purchase by customer ID",5:"All reservations",6:"Make a reservation",7:"Purchase a resource"};
     $scope.selectedTransactionOption;
 
+    $scope.userOptions = {0:"Register User"}
+    $scope.selectedUserOption;
+
     $scope.change = function(){
-      if ($scope.selectedAnnouncementOption=="Post an Announcement"||$scope.selectedResourceGet=="Post a resource" || $scope.selectedRequestOption == "Post a Request") {
+      if ($scope.selectedAnnouncementOption=="Post an Announcement"||$scope.selectedResourceGet=="Post a resource" || $scope.selectedRequestOption == "Post a Request"||$scope.selectedUserOption=="Register User") {
         $scope.showPost=true;
       }
+    };
+
+    this.getUser =function(){
+      example3model.username = $scope.username;
+      example3model.password = $scope.password;
+      example3model.sid = $scope.sid;
+      example3model.cid = $scope.cid;
+      $http.post("http://127.0.0.1:5000/ResourceLocator/user/register", example3model)
+     .then(function(response){
+       alert(response);
+     });
+
     };
 
     this.getAllTransactions = function(){

@@ -2,7 +2,7 @@
 <html ng-app="resourceLocator">
   <head>
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
-    <link rel="stylesheet" type="text/css" href="C:\Users\jorge\Documents\GitHub\resourcelocatorfrontend\bootstrap-3.3.7-dist\css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
   </head>
   <body ng-cloak>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
@@ -13,7 +13,7 @@
     <script type="text/javascript" src="angular.js"></script>
     <script type="text/javascript" src="resourceLocator.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-animate.js"></script>
-
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
 
@@ -64,7 +64,7 @@
       <div class="panel" ng-show="panel.isSelected(2)" id="panel2">
         <h1>Announcement</h1>
 
-        <div class="col-lg-4">
+        <div class="col-lg-4 text-center">
         <label>All Announcements</label>
         <select ng-change="change()" ng-model="selectedAnnouncementOption" ng-cloak ng-options="x for x in announcementOptions"></select>
         <input ng-hide="showPost" class="form-group"ng-model="resourceInput"></input>
@@ -110,7 +110,13 @@
 
       <div class="panel" ng-show="panel.isSelected(5)" id="panel5">
         <h1>User</h1>
-
+        <select ng-change="change()" ng-model="selectedUserOption" ng-cloak ng-options="x for x in userOptions"></select>
+        <input ng-hide="showPost" class="form-group"ng-model="userInput"></input>
+        <input ng-show="showPost" placeholder="Username" ng-model="username"></input>
+        <input ng-show="showPost" placeholder="Password" ng-model="password"></input>
+        <input ng-show="showPost" placeholder="Supplier ID" ng-model="sid"></input>
+        <input ng-show="showPost" placeholder="Customer ID" ng-model="cid"></input>
+        <button class="btn-primary btn " ng-click="panel.getUser()">Submit</button>
 
       </div><!--End of panel 5 row/col grid system-->
 
