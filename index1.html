@@ -56,6 +56,21 @@
         <input ng-show="showPost" placeholder="Cid" ng-model="cid"></input>
         <input ng-show="showPost" placeholder="Rprice" ng-model="rprice"></input>
           <button class="btn-primary btn " ng-click="panel.getAllResources()">Submit</button>
+          <table>
+              <tr>
+                  <th>rname</th>
+                  <th>rstock</th>
+                  <th>cid</th>
+                  <th>rprice</th>
+              </tr>
+              <tr ng-repeat="resource in display">
+                  <td>{{resource.rname}}</td>
+                  <td>{{resource.rstock}}</td>
+                  <td>{{resource.cid}}</td>
+                  <td>{{resource.rprice}}</td>
+              </tr>
+          </table>
+
           <p ng-model="display">{{display}}</p>
         </div>
 
@@ -75,6 +90,8 @@
         <input ng-show="showPost" placeholder="Tid" ng-model="tid"></input>
         <button class="btn-primary btn pull-right" ng-click="panel.getAllAnnouncements()">Submit</button>
         <p ng-model="display">{{display}}</p>
+
+
         </div>
 
       </div>  <!--End of panel 2 row/col grid system-->
