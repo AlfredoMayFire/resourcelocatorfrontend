@@ -33,7 +33,7 @@
     $scope.selectedUserOption;
 
     $scope.change = function(){
-      if ($scope.selectedAnnouncementOption=="Post an Announcement"||$scope.selectedResourceGet=="Post a resource" || $scope.selectedRequestOption == "Post a Request"||$scope.selectedUserOption=="Register User") {
+      if ($scope.selectedAnnouncementOption=="Post an Announcement"||$scope.selectedResourceGet=="Post a resource" || $scope.selectedRequestOption == "Post a Request"||$scope.selectedUserOption=="Register User"||$scope.selectedTransactionOption=="Purchase a resource") {
         $scope.showPost=true;
       }
     };
@@ -45,7 +45,7 @@
       example3model.cid = $scope.cid;
       $http.post("http://127.0.0.1:5000/ResourceLocator/user/register", example3model)
      .then(function(response){
-       alert(response);
+       alert("Successfully inserted user!");
      });
 
     };
@@ -65,35 +65,34 @@
           });
           break;
         case 1:
-          $http.get("http://127.0.0.1:5000/ResourceLocator/purchase/"+$scope.resourceInput)
+          $http.get("http://127.0.0.1:5000/ResourceLocator/purchase/"+$scope.blahTransaction)
           .then(function(response){
             $scope.display=response.data;
-            console.log(response);
           });
           break;
         case 2:
-          $http.get("http://127.0.0.1:5000/ResourceLocator/purchase/resource/"+$scope.resourceInput)
+          $http.get("http://127.0.0.1:5000/ResourceLocator/purchase/resource/"+$scope.blahTransaction)
           .then(function(response){
             $scope.display=response.data;
             console.log(response);
           });
           break;
           case 3:
-            $http.get("http://127.0.0.1:5000/ResourceLocator/SearchAnnounce/Resource/"+$scope.resourceInput)
+            $http.get("http://127.0.0.1:5000/ResourceLocator/SearchAnnounce/Resource/"+$scope.blahTransaction)
             .then(function(response){
               $scope.display=response.data;
               console.log(response);
             });
             break;
-        case 4:
+        case 7:
         example2model.sid = $scope.sid;
         example2model.rid = $scope.rid;
-        example2model.aqty = $scope.aqty;
-        example2model.aprice = $scope.aprice;
-        example2model.tid = $scope.tid;
-             $http.post("http://127.0.0.1:5000/ResourceLocator/Announcements", example2model)
+        example2model.pqty = $scope.pqty;
+        example2model.pprice = $scope.pprice;
+        example2model.cid = $scope.cid;
+             $http.post("http://127.0.0.1:5000/ResourceLocator/purchase", example2model)
             .then(function(response){
-              alert(response);
+              alert("Purchase made!");
             });
 
             break;
