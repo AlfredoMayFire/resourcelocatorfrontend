@@ -83,9 +83,14 @@
         <h1>Transaction Log</h1>
         <div class="text-center">
         <label>Transaction Search</label>
-        <select  ng-model="selectedTransactionOption" ng-cloak ng-options="x for x in transactionOptions"></select>
+        <select ng-change=change() ng-model="selectedTransactionOption" ng-cloak ng-options="x for x in transactionOptions"></select>
         <br />
-        <input ng-hide="showPost" class="form-group"value="{{transactionInput}}"></input>
+        <input ng-hide="showPost" class="form-group" ng-model = "blahTransaction"></input>
+        <input ng-show="showPost" placeholder="Sid" ng-model="sid"></input>
+        <input ng-show="showPost" placeholder="Rid" ng-model="rid"></input>
+        <input ng-show="showPost" placeholder="Quantity" ng-model="pqty"></input>
+        <input ng-show="showPost" placeholder="Price" ng-model="pprice"></input>
+        <input ng-show="showPost" placeholder="cid" ng-model="cid"></input>
 
           <button class="btn-primary btn " ng-click="panel.getAllTransactions()">Submit</button>
           <p ng-model="display">{{display}}</p>
