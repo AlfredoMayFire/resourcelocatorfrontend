@@ -7,6 +7,7 @@
   var Info = "";
   var example1model={};
   var example2model={};
+  var example4model={};
   var example3model={};
   var showPost=false;
 
@@ -33,7 +34,7 @@
     $scope.selectedUserOption;
 
     $scope.change = function(){
-      if ($scope.selectedAnnouncementOption=="Post an Announcement"||$scope.selectedResourceGet=="Post a resource" || $scope.selectedRequestOption == "Post a Request"||$scope.selectedUserOption=="Register User"||$scope.selectedTransactionOption=="Purchase a resource") {
+      if ($scope.selectedAnnouncementOption=="Post an Announcement"||$scope.selectedResourceGet=="Post a resource" || $scope.selectedRequestOption == "Post a Request"||$scope.selectedUserOption=="Register User"||$scope.selectedTransactionOption=="Purchase a resource"||$scope.selectedTransactionOption=="Make a reservation") {
         $scope.showPost=true;
       }
     };
@@ -84,6 +85,20 @@
               console.log(response);
             });
             break;
+            case 4:
+              $http.get("http://127.0.0.1:5000/ResourceLocator/purchase/customer/"+$scope.blahTransaction)
+              .then(function(response){
+                $scope.display=response.data;
+                console.log(response);
+              });
+              break;
+            case 5:
+              $http.get("http://127.0.0.1:5000/ResourceLocator/Announcements/")
+              .then(function(response){
+                $scope.display=response.data;
+                console.log(response);
+              });
+              break;
         case 7:
         example2model.sid = $scope.sid;
         example2model.rid = $scope.rid;
@@ -96,6 +111,18 @@
             });
 
             break;
+        case 6:
+            example4model.sid = $scope.sid;
+            example4model.rid = $scope.rid;
+            example4model.rsqty = $scope.pqty;
+            example4model.cid = $scope.cid;
+            example4model.tid = $scope.tid;
+                 $http.post("http://127.0.0.1:5000/ResourceLocator/reserve", example4model)
+                .then(function(response){
+                  alert(response.data[0]);
+                });
+
+                break;
         default:
         break;
       }
