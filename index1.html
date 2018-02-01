@@ -58,7 +58,6 @@
           <button class="btn-primary btn " ng-click="panel.getAllResources()">Submit</button>
           <p ng-model="display">{{display}}</p>
         </div>
-
       </div> <!--End of panel 1 row/col grid system-->
 
       <div class="panel" ng-show="panel.isSelected(2)" id="panel2">
@@ -85,7 +84,7 @@
         <label>Transaction Search</label>
         <select  ng-model="selectedTransactionOption" ng-cloak ng-options="x for x in transactionOptions"></select>
         <br />
-        <input ng-hide="showPost" class="form-group"value="{{transactionInput}}"></input>
+        <input ng-hide="showPost" class="form-group"ngModel="transactionInput"></input>
           <button class="btn-primary btn " ng-click="panel.RequestMethodToggle()">Submit</button>
         </div>
 
