@@ -56,7 +56,7 @@
         <input ng-show="showPost" placeholder="Cid" ng-model="cid"></input>
         <input ng-show="showPost" placeholder="Rprice" ng-model="rprice"></input>
           <button class="btn-primary btn " ng-click="panel.getAllResources()">Submit</button>
-          <table>
+          <table class="table text-center">
               <tr>
                   <th>rid</th>
                   <th>rname</th>
@@ -64,16 +64,21 @@
                   <th>cid</th>
                   <th>rprice</th>
               </tr>
+<<<<<<< HEAD
               <tr ng-repeat="resource in responsejson1">
                   <td>{{resource.Rid}}</td>
+=======
+              <tr ng-repeat="resource in display.Resource">
+>>>>>>> 5ee1e5635941b0934fbc6e1e2832b11018c97410
                   <td>{{resource.Rname}}</td>
                   <td>{{resource.rstock}}</td>
                   <td>{{resource.cid}}</td>
                   <td>{{resource.rprice}}</td>
               </tr>
           </table>
+      
 
-          <p ng-model="display">{{display}}</p>
+
         </div>
 
       </div> <!--End of panel 1 row/col grid system-->
@@ -110,6 +115,7 @@
         <input ng-show="showPost" placeholder="Quantity" ng-model="pqty"></input>
         <input ng-show="showPost" placeholder="Price" ng-model="pprice"></input>
         <input ng-show="showPost" placeholder="cid" ng-model="cid"></input>
+        <input ng-show="showPost" placeholder="Tid" ng-model="tid"></input>
 
           <button class="btn-primary btn " ng-click="panel.getAllTransactions()">Submit</button>
           <p ng-model="display">{{display}}</p>
