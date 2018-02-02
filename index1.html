@@ -194,11 +194,16 @@
         <h1>User</h1>
         <select ng-change="change()" ng-model="selectedUserOption" ng-cloak ng-options="x for x in userOptions"></select>
         <input ng-hide="showPost" class="form-group"ng-model="userInput"></input>
+        <input ng-show="showPost" placeholder="name" ng-model="name"></input>
+        <input ng-show="showPost" placeholder="lastname" ng-model="lastname"></input>
+        <input ng-show="showPost" placeholder="gpsx" ng-model="gpsx"></input>
+        <input ng-show="showPost" placeholder="gpsy" ng-model="gpsy"></input>
         <input ng-show="showPost" placeholder="Username" ng-model="username"></input>
         <input ng-show="showPost" placeholder="Password" ng-model="password"></input>
-        <input ng-show="showPost" placeholder="Supplier ID" ng-model="sid"></input>
-        <input ng-show="showPost" placeholder="Customer ID" ng-model="cid"></input>
-        <button class="btn-primary btn " ng-click="panel.getUser()">Submit</button>
+        <input ng-show="showPost" placeholder="tid" ng-model="tid"></input>
+        <input ng-show="showPost" placeholder="address" ng-model="address"></input>
+        <button class="btn-primary btn " ng-click="panel.registerCustomer()">Submit</button>
+        <button class="btn-primary btn " ng-click="panel.registerSupplier()">Submit</button>
 
       </div><!--End of panel 5 row/col grid system-->
 

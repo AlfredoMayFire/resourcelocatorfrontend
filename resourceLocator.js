@@ -8,6 +8,7 @@
   var example1model={};
   var example2model={};
   var example3model={};
+  var example4model={};
   var showPost=false;
 
 
@@ -29,26 +30,54 @@
     $scope.transactionOptions = {0:"All Transactions", 1:"Transactions by purchase ID", 2:"Purchase By resource ID", 3:"Purchase By Supplier ID",4:"Purchase by customer ID",5:"All reservations",6:"Make a reservation",7:"Purchase a resource"};
     $scope.selectedTransactionOption;
 
-    $scope.userOptions = {0:"Register User"}
+    $scope.userOptions = {0:"Register Customer", 1:"Register Supplier"}
     $scope.selectedUserOption;
 
     $scope.change = function(){
-      if ($scope.selectedAnnouncementOption=="Post an Announcement"||$scope.selectedResourceGet=="Post a resource" || $scope.selectedRequestOption == "Post a Request"||$scope.selectedUserOption=="Register User"||$scope.selectedTransactionOption=="Purchase a resource") {
+      if ($scope.selectedAnnouncementOption=="Post an Announcement"||$scope.selectedResourceGet=="Post a resource" || $scope.selectedRequestOption == "Post a Request"||$scope.selectedUserOption=="Register Customer"||$scope.selectedUserOption=="Register Supplier"||$scope.selectedTransactionOption=="Purchase a resource") {
         $scope.showPost=true;
       }
     };
 
-    this.getUser =function(){
-      example3model.username = $scope.username;
-      example3model.password = $scope.password;
-      example3model.sid = $scope.sid;
-      example3model.cid = $scope.cid;
-      $http.post("http://127.0.0.1:5000/ResourceLocator/user/register", example3model)
+    this.registerCustomer=function(){
+
+
+      example4model.username = $scope.username;
+      example4model.password = $scope.password;
+      example4model.name = $scope.name;
+      example4model.lastname = $scope.lastname;
+      example4model.gpsy = $scope.gpsy;
+      example4model.gpsx = $scope.gpsx;
+      example4model.tid = $scope.tid;
+      example4model.address = $scope.address;
+       console.log(example4model);
+      $http.post("http://127.0.0.1:5000/ResourceLocator/customer/user/register", example4model)
      .then(function(response){
+        console.log(response);
        alert("Successfully inserted user!");
      });
+   };
 
-    };
+     this.registerSupplier=function(){
+
+
+       example4model.username = $scope.username;
+       example4model.password = $scope.password;
+       example4model.name = $scope.name;
+       example4model.lastname = $scope.lastname;
+       example4model.gpsy = $scope.gpsy;
+       example4model.gpsx = $scope.gpsx;
+       example4model.tid = $scope.tid;
+       example4model.address = $scope.address;
+        console.log(example4model);
+        //esta ruta todavia no existe
+       $http.post("http://127.0.0.1:5000/ResourceLocator/supplier/user/register", example4model)
+      .then(function(response){
+         console.log(response);
+        alert("Successfully inserted user!");
+      });
+
+  };
 
     this.getAllTransactions = function(){
       for (var i = 0; i < 10; i++) {
@@ -58,6 +87,7 @@
       };
       switch ($scope.selectedIndex) {
         case 0:
+         showPost=false;
           $http.get("http://127.0.0.1:5000/ResourceLocator/purchase")
           .then(function(response){
             $scope.display=response.data;
@@ -84,6 +114,13 @@
               console.log(response);
             });
             break;
+                        case 4:
+               $http.get("http://127.0.0.1:5000/ResourceLocator/purchase/customer/"+$scope.blahTransaction)
+               .then(function(response){
+                $scope.display=response.data;
+                console.log(response);
+               });
+              break;
         case 7:
         example2model.sid = $scope.sid;
         example2model.rid = $scope.rid;
@@ -110,6 +147,7 @@
       };
       switch ($scope.selectedIndex){
         case 0:
+        showPost=false;
           $http.get("http://127.0.0.1:5000/ResourceLocator/BrowseRequests/")
           .then(function(response){
             $scope.display = response.data;
