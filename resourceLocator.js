@@ -144,18 +144,7 @@
         example2model.pqty = $scope.pqty;
         example2model.pprice = $scope.pprice;
         example2model.cid = $scope.cid;
-
-        $http.post(url+"ResourceLocator/resource", example1model)
-        .then(function(response){
-          alert(response.data);
-          deferred.resolve(response.data);
-          //needs promise or callback to get data
-          example2model.rid = response.data.rid;
-          example2model.aqty = response.data.rstock;
-          example2model.aprice = response.data.rprice;
-
-        });
-
+        alert(example2model);
              $http.post(url+"ResourceLocator/purchase", example2model)
             .then(function(response){
               alert("Purchase made!");
@@ -206,7 +195,7 @@
         requestjson.rid = $scope.rid;
         requestjson.tid = $scope.tid;
         requestjson.rrqty = $scope.rrqty;
-        $http.post(url+"ResourceLocator/BrowseRequests", requestjson)
+        $http.post(url+"ResourceLocator/BrowseRequests/", requestjson)
         .then(function(response){
         alert("Successfully inserted request!");
         });
@@ -217,11 +206,11 @@
     };
 
 
-    // this.asyncoooo = function(){
-    //   var deferred = $q.defer();
-    //
-    //   return deferred.promise;
-    // };
+    this.asyncoooo = function(){
+      var deferred = $q.defer();
+
+      return deferred.promise;
+    };
 
 
 
@@ -262,17 +251,13 @@
             break;
         case 4:
 
-
-
-        example1model.rname = $scope.rname;
-        example1model.cid = $scope.cid;
-        example1model.rstock = $scope.rstock;
-        example1model.rprice = $scope.rprice;
-
+        example2model.rid = $scope.rid;
+        example2model.aqty = $scope.rstock;
+        example2model.aprice = $scope.rprice;
         example2model.tid = $scope.tid;
         example2model.sid = $scope.sid;
-        console.log(example1model);
-        alert(this.asyncoo());
+
+
         $http.post(url+"ResourceLocator/Announcements/", example2model)
          .then(function(response){
            alert(response);
