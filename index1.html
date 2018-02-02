@@ -51,10 +51,7 @@
         <select ng-change="change()" ng-model="selectedResourceGet" ng-cloak ng-options="x for x in resourceGets"></select>
         <br />
         <input ng-hide="showPost" class="form-group"ng-model="resourceInput"></input>
-        <input ng-show="showPost" placeholder="Rname" ng-model="rname"></input>
-        <input ng-show="showPost" placeholder="Rstock" ng-model="rstock"></input>
-        <input ng-show="showPost" placeholder="Cid" ng-model="cid"></input>
-        <input ng-show="showPost" placeholder="Rprice" ng-model="rprice"></input>
+
           <button class="btn-primary btn " ng-click="panel.getAllResources()">Submit</button>
           <table class="table text-center">
               <tr>
@@ -64,19 +61,14 @@
                   <th>cid</th>
                   <th>rprice</th>
               </tr>
-<<<<<<< HEAD
-              <tr ng-repeat="resource in responsejson1">
+              <tr ng-repeat="resource in display.Resources">
                   <td>{{resource.Rid}}</td>
-=======
-              <tr ng-repeat="resource in display.Resource">
->>>>>>> 5ee1e5635941b0934fbc6e1e2832b11018c97410
                   <td>{{resource.Rname}}</td>
                   <td>{{resource.rstock}}</td>
                   <td>{{resource.cid}}</td>
                   <td>{{resource.rprice}}</td>
               </tr>
           </table>
-      
 
 
         </div>
@@ -92,12 +84,28 @@
         <input ng-hide="showPost" class="form-group"ng-model="resourceInput"></input>
         <input ng-show="showPost" placeholder="Sid" ng-model="sid"></input>
         <input ng-show="showPost" placeholder="Rid" ng-model="rid"></input>
-        <input ng-show="showPost" placeholder="Aqty" ng-model="Aqty"></input>
+        <input ng-show="showPost" placeholder="Aqty" ng-model="aqty"></input>
         <input ng-show="showPost" placeholder="Aprice" ng-model="aprice"></input>
         <input ng-show="showPost" placeholder="Tid" ng-model="tid"></input>
         <button class="btn-primary btn pull-right" ng-click="panel.getAllAnnouncements()">Submit</button>
-        <p ng-model="display">{{display}}</p>
-
+        <table class="table text-center">
+            <tr>
+                <th>aid</th>
+                <th>adate</th>
+                <th>aqty</th>
+                <th>rid</th>
+                <th>sid</th>
+                <th>tid</th>
+            </tr>
+            <tr ng-repeat="announcement in display.AllAnnouncementsBySupplier">
+                <td>{{announcement.Aid}}</td>
+                <td>{{announcement.adate}}</td>
+                <td>{{announcement.aqty}}</td>
+                <td>{{announcement.rid}}</td>
+                <td>{{announcement.sid}}</td>
+                <td>{{announcement.tid}}</td>
+            </tr>
+        </table>
 
         </div>
 
@@ -118,7 +126,27 @@
         <input ng-show="showPost" placeholder="Tid" ng-model="tid"></input>
 
           <button class="btn-primary btn " ng-click="panel.getAllTransactions()">Submit</button>
-          <p ng-model="display">{{display}}</p>
+
+          <table class="table text-center">
+              <tr>
+                  <th>cid</th>
+                  <th>pdate</th>
+                  <th>pid</th>
+                  <th>pprice</th>
+                  <th>pqty</th>
+                  <th>rid</th>
+                  <th>sid</th>
+              </tr>
+              <tr ng-repeat="purchase in display.Purchase">
+                  <td>{{purchase.cid}}</td>
+                  <td>{{purchase.pdate}}</td>
+                  <td>{{purchase.pid}}</td>
+                  <td>{{purchase.pprice}}</td>
+                  <td>{{purchase.pqty}}</td>
+                  <td>{{purchase.rid}}</td>
+                  <td>{{purchase.sid}}</td>
+              </tr>
+          </table>
         </div>
 
       </div><!--End of panel 3 row/col grid system-->
@@ -135,7 +163,23 @@
         <input ng-show="showPost" placeholder="rrqty" ng-model="rrqty"></input>
         <input ng-show="showPost" placeholder="tid" ng-model="tid"></input>
         <button class="btn-primary btn " ng-click="panel.RequestMethodToggle()">Submit</button>
-        <p ng-model="display">{{display}}</p>
+
+        <table class="table text-center">
+            <tr>
+                <th>cid</th>
+                <th>rid</th>
+                <th>rrqty</th>
+                <th>rrdate</th>
+                <th>tid</th>
+            </tr>
+            <tr ng-repeat="request in display.Requests">
+                <td>{{request.cid}}</td>
+                <td>{{request.rid}}</td>
+                <td>{{request.rrdate}}</td>
+                <td>{{request.rrqty}}</td>
+                <td>{{request.tid}}</td>
+            </tr>
+        </table>
         </div>
 
       </div><!--End of panel 4 row/col grid system-->
