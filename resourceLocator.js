@@ -5,7 +5,7 @@
   //var url = "http://localhost:9000/";
 
   var Info = "";
-  var example1model=[];
+  var example1model={};
   var example2model={};
   var example3model={};
   var showPost=false;
@@ -185,17 +185,30 @@
             break;
         case 4:
 
-        example2model.sid = $scope.sid;
-        example2model.rid = $scope.rid;
-        example2model.aqty = $scope.aqty;
-        example2model.aprice = $scope.aprice;
+
+        example1model.rname = $scope.rname;
+        example1model.cid = $scope.cid;
+        example1model.rstock = $scope.rstock;
+        example1model.rprice = $scope.rprice;
+
         example2model.tid = $scope.tid;
+        example2model.sid = $scope.sid;
+        console.log(example1model);
+        $http.post("http://127.0.0.1:5000/ResourceLocator/resource", example1model)
+        .then(function(response){
+          alert(response.data);
+          //needs promise or callback to get data
+          example2model.rid = response.data;
+          example2model.aqty = response.data.rstock;
+          example2model.aprice = response.data.rprice;
+        });
+
             $http.post("http://127.0.0.1:5000/ResourceLocator/Announcements/", example2model)
            .then(function(response){
              alert(response);
            });
 
-           break;
+          break;
         default:
         break;
       }
@@ -273,6 +286,18 @@
             console.log(response);
           });
           break;
+        case 9:
+         example1model.rname = $scope.rname;
+         example1model.rstock = $scope.rstock;
+         example1model.cid = $scope.cid;
+         example1model.rprice = $scope.rprice;
+         console.log(example1model);
+            $http.post("http://127.0.0.1:5000/ResourceLocator/resource", example1model)
+                        .then(function(response){
+               alert("Successfully inserted resource!");
+             });
+
+            break;
 
         default:
         break;
