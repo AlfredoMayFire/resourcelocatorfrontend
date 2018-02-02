@@ -252,7 +252,7 @@
         case 4:
 
         example2model.rid = $scope.rid;
-        example2model.aqty = $scope.rstock;
+        example2model.aqty = $scope.aqty;
         example2model.aprice = $scope.rprice;
         example2model.tid = $scope.tid;
         example2model.sid = $scope.sid;
