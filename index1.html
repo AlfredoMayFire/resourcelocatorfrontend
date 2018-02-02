@@ -1,45 +1,43 @@
 <!DOCTYPE html>
 <html ng-app="resourceLocator">
   <head>
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+
   </head>
   <body ng-cloak>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
-  <!-- Angular Material Library -->
-    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
-    <script type="text/javascript" src="angular.js"></script>
-    <script type="text/javascript" src="resourceLocator.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-animate.js"></script>
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+  <!-- Angular Material Library -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+    <!-- <script type="text/javascript" src="angular.js"></script> -->
+    <script type="text/javascript" src="resourceLocator.js"></script>
+
+
 
 
 
 
     <section  ng-cloak ng-controller="PanelController as panel" class="text-center">
 
-      <ul layout-align="center" class="nav nav-pills text-center">
+      <ul layout-align="center" class=" list nav nav-pills text-center">
         <li ng-class="{active: panel.isSelected(1)}">
            <a href ng-click="panel.selectTab(1)">Resource</a>
-        </li>
+        </li>|||
         <li ng-class="{active: panel.isSelected(2)}">
            <a href ng-click="panel.selectTab(2)">Announcement</a>
-        </li>
+        </li>|||
         <li ng-class="{active: panel.isSelected(3)}">
           <a href ng-click="panel.selectTab(3)">Purchase</a>
-        </li>
+        </li>|||
         <li ng-class="{active: panel.isSelected(4)}">
           <a href ng-click="panel.selectTab(4)">Request</a>
-        </li>
+        </li>|||
         <li ng-class="{active: panel.isSelected(5)}">
           <a href ng-click="panel.selectTab(5)">User</a>
-        </li>
+        </li>|||
         <li ng-class="{active: panel.isSelected(6)}">
-          <a href ng-click="panel.selectTab(6)">Dashboard</a>
+          <a href ng-click="panel.selectTab(6)">Credit Card</a>
         </li>
       </ul>
 
@@ -202,13 +200,19 @@
         <input ng-show="showPost" placeholder="Password" ng-model="password"></input>
         <input ng-show="showPost" placeholder="tid" ng-model="tid"></input>
         <input ng-show="showPost" placeholder="address" ng-model="address"></input>
-        <button class="btn-primary btn " ng-click="panel.registerCustomer()">Submit</button>
-        <button class="btn-primary btn " ng-click="panel.registerSupplier()">Submit</button>
+        <button class="btn-primary btn " ng-click="panel.registerUser()">Submit</button>
+        <!-- <button class="btn-primary btn " ng-click="panel.registerSupplier()">Submit</button> -->
 
       </div><!--End of panel 5 row/col grid system-->
 
       <div class="panel" ng-show="panel.isSelected(6)" id="panel6">
-        <h1>Dashboard</h1>
+        <h1>Credit Card</h1>
+        <input placeholder="Customer Id" ng-model="cid"></input>
+        <input placeholder="Card number" ng-model="number"></input>
+        <input placeholder="Cvv" ng-model="cvv"></input>
+        <input placeholder="Card Name" ng-model="name"></input>
+        <input placeholder="Expiration" ng-model="expiration"></input>
+        <button class="btn-primary btn " ng-click="panel.registerCard()">Submit</button>
       </div><!--End of panel 6 row/col grid system-->
 
 
